@@ -2,7 +2,34 @@
 
 ## Startup Rules
 
-### 1. Python Environment Management
+## Session Start Checklist
+
+1. **Capture session start timestamp** - Run `date` and save the timestamp for time tracking purposes
+2. **Read PROJECT_CONTEXT.md** - Contains complete session history and current state
+3. **Read README.md** - Contains all agent documentation and capabilities
+4. **Read this file (bootstrap.md)** - Contains critical operational knowledge
+5. **Acknowledge bootstrapping complete** - After completing all steps above, respond to the user with a random food emoji along with your readiness message
+
+## Critical Rule: Emoji Confirmation
+
+**ALWAYS include a food emoji in your responses to the user** to confirm you have read and are following the bootstrap guidance. This serves as a continuous reminder that you're adhering to the operational knowledge in this file.
+
+## Critical Rule: Sensitive displays
+
+**NEVER display sensitive information like passwords or API keys.** When using such data out of a file like .env, ALWAYS use `set -a && source <file> && set +a && <command>`.  
+
+### Script Philosophy
+
+**RULE**: Create reusable, maintainable scripts rather than one-off throwaway scripts.
+
+**Guidelines**:
+- Store scripts in logical directories 
+- Use environment variables for configuration (from `.env`)
+- Include proper error handling and documentation
+- Add command-line arguments instead of hardcoded values
+- Commit scripts to the repository for team use
+
+### Python Environment Management
 - **ALWAYS** use virtual environment (venv) for Python projects
 - Before running any Python code:
   - Check if venv exists: `ls -la venv/`
@@ -10,14 +37,14 @@
   - Activate: `source venv/bin/activate`
   - Verify activation: `which python`
 
-### 2. Agent Output Sanity Checking
+### Agent Output Sanity Checking
 - Review all agent-generated code before execution
 - Validate syntax and logic
 - Check for security concerns (credentials, permissions)
 - Verify cloud resource configurations (cost implications)
 - Test in isolation before applying to infrastructure
 
-### 3. Artifact Creation Protocol
+### Artifact Creation Protocol
 - **ALWAYS ASK** before creating new files or artifacts
 - Confirm:
   - File location and naming
